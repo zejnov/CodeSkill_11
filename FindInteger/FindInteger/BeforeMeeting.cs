@@ -4,9 +4,8 @@ namespace FindInteger
 {
     public class BeforeMeeting
     {
-        public void Run()
+        public void Run(int[] givenList)
         {
-            var givenList = new[] { -11, -2, 1, 2, 7 };
             var result = FindFirstPositiveInteger(givenList);
             Console.WriteLine(result != null ? $"{result.Value}" : "No result found");
             Console.ReadKey();
