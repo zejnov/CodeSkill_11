@@ -6,7 +6,20 @@ namespace FindInteger
     {
         public void Run(int[] givenList)
         {
-            throw new NotImplementedException();
+
+            FindInteger(givenList);
+        }
+
+        public int? FindInteger(int[] givenList)
+        {
+            var length = givenList.Length;
+
+            //code goes there
+            
+            FindInteger(givenList);
+
+
+            return null;
         }
     }
 }
