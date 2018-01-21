@@ -47,5 +47,11 @@ namespace FindInteger
         {
             return array.First() == array.Last();
         }
+
+        public static bool HasValuesDifferentByOne(this int[] array)
+        {
+            return array.First() == array.Last() + 1;
+        }
+
     }
 }
