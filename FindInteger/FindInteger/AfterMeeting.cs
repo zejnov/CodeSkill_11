@@ -7,29 +7,29 @@ namespace FindInteger
 {
     public class AfterMeeting
     {
-        public int? Run(int[] givenList)
+        public int? Run(int[] givenArray)
         {
-            return FindInteger(givenList);
+            return FindInteger(givenArray);
         }
 
-        public int? FindInteger(int[] givenList)
+        public int? FindInteger(int[] givenArray)
         {
-            if (givenList.IsNegative() || givenList.HasSameValues() || givenList.HasValuesDifferentByOne())
+            if (givenArray.IsNegative() || givenArray.HasSameValues() || givenArray.HasValuesDifferentByOne())
                 return null;
 
-            if (givenList.IsTroughZero() && givenList.HasValuesDifferentByTwoOrMore() ||
-                givenList.IsPositive() && givenList.HasValuesDifferentByTwoOrMore())
+            if (givenArray.IsTroughZero() && givenArray.HasValuesDifferentByTwoOrMore() ||
+                givenArray.IsPositive() && givenArray.HasValuesDifferentByTwoOrMore())
             {
-                if (givenList.Length <= 3 && givenList[1] - givenList[0] > 1)
+                if (givenArray.Length <= 3 && givenArray[1] - givenArray[0] > 1)
                 {
-                    if (givenList[0] > 0)
-                        return givenList[0] + 1;
+                    if (givenArray[0] > 0)
+                        return givenArray[0] + 1;
 
-                    if (givenList[0] <= 0)
+                    if (givenArray[0] <= 0)
                         return 1;
                 }
 
-                return FindInteger(givenList.TakeLeftBunch()) ?? FindInteger(givenList.TakeRightBunch());
+                return FindInteger(givenArray.TakeLeftBunch()) ?? FindInteger(givenArray.TakeRightBunch());
             }
             return null;
         }

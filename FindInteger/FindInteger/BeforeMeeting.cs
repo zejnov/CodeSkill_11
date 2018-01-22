@@ -11,12 +11,12 @@ namespace FindInteger
             Console.ReadKey();
         }
 
-        private static int? FindFirstPositiveInteger(int[] givenList)
+        private static int? FindFirstPositiveInteger(int[] givenArray)
         {
-            for (var i = 1; i < givenList.Length; i++)
+            for (var i = 1; i < givenArray.Length; i++)
             {
-                var currentValue = givenList[i];
-                var previousValue = givenList[i - 1];
+                var currentValue = givenArray[i];
+                var previousValue = givenArray[i - 1];
                 if (currentValue <= 0)
                     continue;
 
