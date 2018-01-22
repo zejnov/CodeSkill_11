@@ -2,19 +2,23 @@
 
 namespace FindInteger
 {
-    class Program
+    public class Program
     {
+        public AfterMeeting IntSearcher = new AfterMeeting();
+
         public static void Main()
         {
-            var givenList = new[] { -11, -2, 0,0, 2 };
+            new Program().Execute();
+        }
 
-            //new BeforeMeeting().Run(givenList);
+        private void Execute()
+        {
+            var givenList = new[] { -11, -2, 0, 0, 2 };
 
-            var sth = new AfterMeeting().Run(givenList);
+            var sth = IntSearcher.Run(givenList);
+
             Console.WriteLine(sth == null ? $"null" : $"{sth.Value}");
             Console.ReadLine();
         }
-
-        
     }
 }
