@@ -17,8 +17,7 @@ namespace FindInteger
             if (givenArray.IsNegative() || givenArray.HasSameValues() || givenArray.HasValuesDifferentByOne())
                 return null;
 
-            if (givenArray.IsTroughZero() && givenArray.HasValuesDifferentByTwoOrMore() ||
-                givenArray.IsPositive() && givenArray.HasValuesDifferentByTwoOrMore())
+            if (givenArray.HasValuesDifferentByTwoOrMore() && (givenArray.IsTroughZero() || givenArray.IsPositive())) 
             {
                 if (givenArray.Length <= 3 && givenArray[1] - givenArray[0] > 1)
                 {
