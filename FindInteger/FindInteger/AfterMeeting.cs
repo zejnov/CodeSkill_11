@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace FindInteger
 {
-    class AfterMeeting
+    public class AfterMeeting
     {
-        public void Run(int[] givenList)
+        public int? Run(int[] givenList)
         {
-            FindInteger(givenList);
+            return FindInteger(givenList);
         }
 
         public int? FindInteger(int[] givenList)
@@ -20,10 +20,10 @@ namespace FindInteger
             if (givenList.IsTroughZero() && givenList.HasValuesDifferentByTwoOrMore() ||
                 givenList.IsPositive() && givenList.HasValuesDifferentByTwoOrMore())
             {
-                if (givenList[1] - givenList[0] > 1)
+                if (givenList.Length <= 3 && givenList[1] - givenList[0] > 1)
                 {
                     if (givenList[0] > 0)
-                        return givenList[0];
+                        return givenList[0] + 1;
 
                     if (givenList[0] <= 0)
                         return 1;
