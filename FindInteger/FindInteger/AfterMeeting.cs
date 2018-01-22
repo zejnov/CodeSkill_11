@@ -12,7 +12,7 @@ namespace FindInteger
             return FindInteger(givenArray);
         }
 
-        public int? FindInteger(int[] givenArray)
+        private int? FindInteger(int[] givenArray)
         {
             if (givenArray.IsNegative() || givenArray.HasSameValues() || givenArray.HasValuesDifferentByOne())
                 return null;
