@@ -15,7 +15,6 @@ namespace FindInteger
             return _counter;
         }
 
-
         private int? FindFirstPositiveInteger(int[] givenArray)
         {
             for (var i = 1; i < givenArray.Length; i++)

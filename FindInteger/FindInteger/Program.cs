@@ -10,29 +10,30 @@ namespace FindInteger
 
         public static void Main()
         {
-            while (true)
+            var i = 0;
+            while (i < 13)
             {
-                Console.Clear();
-                new Program().Execute();
-                Console.ReadKey(false);
+                i++;
+                new Program().Execute(i);
             }
+            Console.ReadKey();
         }
 
-        private void Execute()
+        private void Execute(int i)
         {
-            var size = 1000;
-            var array = GenerateRandomArray(size, 1000);
+            var size = 100;
+            var array = GenerateRandomArray(size, 100);
 
             var halfWay = IntSearcher.Run(array);
-            var linear = IntSearcherLinear.Run(array);
-            
-            Console.WriteLine($"SUMMARY: Active search: {halfWay}, linear: {linear} in  range: {size}");
+            var linear = 0;//IntSearcherLinear.Run(array);
 
-            foreach (var field in array)
-            {
-                Console.Write($" {field}");
-            }
-            Console.ReadLine();
+            Console.WriteLine($"{i}. SUMMARY: Active search: {halfWay}, linear: {linear} in  range: {size}");
+
+            //foreach (var field in array)
+            //{
+            //    Console.Write($" {field}");
+            //}
+            //Console.ReadLine();
         }
 
         private int[] GenerateRandomArray(int size, int range)
