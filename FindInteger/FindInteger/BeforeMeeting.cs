@@ -4,17 +4,23 @@ namespace FindInteger
 {
     public class BeforeMeeting
     {
-        public void Run(int[] givenList)
+        private int _counter { get; set; }
+        private void Increase() => _counter++;
+
+        public int Run(int[] givenList)
         {
+            _counter = 0;
             var result = FindFirstPositiveInteger(givenList);
-            Console.WriteLine(result != null ? $"{result.Value}" : "No result found");
-            Console.ReadKey();
+            Console.WriteLine(result != null ? $"Linear search: {result.Value}" : "Linear search: No result found");
+            return _counter;
         }
 
-        private static int? FindFirstPositiveInteger(int[] givenArray)
+
+        private int? FindFirstPositiveInteger(int[] givenArray)
         {
             for (var i = 1; i < givenArray.Length; i++)
             {
+                Increase();
                 var currentValue = givenArray[i];
                 var previousValue = givenArray[i - 1];
                 if (currentValue <= 0)

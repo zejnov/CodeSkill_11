@@ -7,13 +7,22 @@ namespace FindInteger
 {
     public class AfterMeeting
     {
-        public int? Run(int[] givenArray)
+        private int _counter { get; set; }
+        private void Increase() => _counter++;
+
+        public int Run(int[] givenArray)
         {
-            return FindInteger(givenArray);
+            _counter = 0;
+            var result = FindInteger(givenArray);
+            Console.WriteLine(result != null ? $"Active search: {result.Value}" : "Active search: No result found");
+
+            return _counter;
         }
 
         private int? FindInteger(int[] givenArray)
         {
+            Increase();
+
             if (givenArray.IsNegative() || givenArray.HasSameValues() || givenArray.HasValuesDifferentByOne())
                 return null;
 
@@ -39,7 +48,7 @@ namespace FindInteger
         public static int[] TakeRightBunch(this int[] array)
         {
             decimal value = array.Length / 2;
-            var size = Math.Floor(value);
+            var size = Math.Floor(value) - 1;
             return array.Skip((int)size).ToArray();
         }
 
