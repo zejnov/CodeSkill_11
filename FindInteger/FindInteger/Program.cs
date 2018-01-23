@@ -10,7 +10,12 @@ namespace FindInteger
 
         public static void Main()
         {
-            new Program().Execute();
+            while (true)
+            {
+                Console.Clear();
+                new Program().Execute();
+                Console.ReadKey(false);
+            }
         }
 
         private void Execute()
