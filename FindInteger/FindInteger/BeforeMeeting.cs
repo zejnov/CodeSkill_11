@@ -7,12 +7,12 @@ namespace FindInteger
         private int _counter { get; set; }
         private void Increase() => _counter++;
 
-        public int Run(int[] givenList)
+        public Tuple<int,int> Run(int[] givenList)
         {
             _counter = 0;
             var result = FindFirstPositiveInteger(givenList);
             Console.WriteLine(result != null ? $"Linear search: {result.Value}" : "Linear search: No result found");
-            return _counter;
+            return new Tuple<int, int>(_counter, result.Value);
         }
 
         private int? FindFirstPositiveInteger(int[] givenArray)
