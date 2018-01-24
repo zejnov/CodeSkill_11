@@ -58,15 +58,15 @@ namespace FindInteger
     {
         public static int[] TakeRightBunch(this int[] array)
         {
-            var value = array.Length / 2.0;
-            var size = Math.Floor(value);
+            var value = array.Length / 2.0 - 1.0;
+            var size = Math.Ceiling(value);
             return array.Skip((int)size).ToArray();
         }
 
         public static int[] TakeLeftBunch(this int[] array)
         {
-            var value = array.Length / 2.0;
-            var size = Math.Ceiling((decimal)value);
+            var value = array.Length / 2.0 + 1.0;
+            var size = Math.Floor((decimal)value);
             return array.Take((int)size).ToArray();
         }
 

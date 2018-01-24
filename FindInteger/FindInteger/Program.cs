@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace FindInteger
 {
@@ -19,21 +18,12 @@ namespace FindInteger
 
         private void Run()
         {
-
-            //Execute(1);
-            TestRun();
-
-        }
-
-        private void TestRun()
-        {
-            var size = 19;
-            var array = GenerateRandomArray(size, 100);
-            Console.WriteLine("Left: ");
-            array.TakeLeftBunch().ToList().ForEach(a => Console.Write($"{a} "));
-            Console.WriteLine("\nRight: ");
-            array.TakeRightBunch().ToList().ForEach(a => Console.Write($"{a} "));
-            Console.ReadKey();
+            while (true)
+            {
+                Execute(1);
+                Console.ReadKey();
+            }
+            //TestRun();
         }
 
         private void Execute(int i)
@@ -58,9 +48,20 @@ namespace FindInteger
             var random = new Random(DateTime.UtcNow.Millisecond);
             for (var i = 0; i < size; i++) 
             {
-                array[i] = random.Next(-range, range);
+                array[i] = random.Next(0, range);
             }
             return array.OrderBy(a => a).ToArray();
+        }
+
+        private void TestRun()
+        {
+            var size = 5;
+            var array = GenerateRandomArray(size, 100);
+            Console.WriteLine("Left: ");
+            array.TakeLeftBunch().ToList().ForEach(a => Console.Write($"{a} "));
+            Console.WriteLine("\nRight: ");
+            array.TakeRightBunch().ToList().ForEach(a => Console.Write($"{a} "));
+            Console.ReadKey();
         }
     }
 }
