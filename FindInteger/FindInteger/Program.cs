@@ -1,24 +1,67 @@
 ﻿using System;
+using System.Linq;
 
 namespace FindInteger
 {
     public class Program
     {
         public AfterMeeting IntSearcher = new AfterMeeting();
+        public BeforeMeeting IntSearcherLinear = new BeforeMeeting();
+
+        private int[] Array { get; set; }
 
         public static void Main()
         {
-            new Program().Execute();
+            new Program().Run();
+            Console.ReadKey();
         }
 
-        private void Execute()
+        private void Run()
         {
-            var givenList = new[] { -11, -2, 0, 0, 2 };
+            while (true)
+            {
+                Execute(1);
+                Console.ReadKey();
+            }
+            //TestRun();
+        }
 
-            var sth = IntSearcher.Run(givenList);
+        private void Execute(int i)
+        {
+            var size = 100;
+            Array = GenerateRandomArray(size, 100);
 
-            Console.WriteLine(sth == null ? $"null" : $"{sth.Value}");
-            Console.ReadLine();
+            var halfWay = IntSearcher.Run(Array);
+            var linear = IntSearcherLinear.Run(Array);
+
+            Console.WriteLine($"{i}. SUMMARY: Active search: {halfWay.Item1}, linear: {linear.Item1} in  range: {size}");
+            
+            if (halfWay.Item2 != linear.Item2)
+            {
+                Array.ToList().ForEach(a => Console.Write($"{a} "));
+            }
+        }
+
+        private int[] GenerateRandomArray(int size, int range)
+        {
+            var array = new int[size];
+            var random = new Random(DateTime.UtcNow.Millisecond);
+            for (var i = 0; i < size; i++) 
+            {
+                array[i] = random.Next(0, range);
+            }
+            return array.OrderBy(a => a).ToArray();
+        }
+
+        private void TestRun()
+        {
+            var size = 5;
+            var array = GenerateRandomArray(size, 100);
+            Console.WriteLine("Left: ");
+            array.TakeLeftBunch().ToList().ForEach(a => Console.Write($"{a} "));
+            Console.WriteLine("\nRight: ");
+            array.TakeRightBunch().ToList().ForEach(a => Console.Write($"{a} "));
+            Console.ReadKey();
         }
     }
 }
